@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv_ocr/
+*.egg-info/
+*.egg
+
+# IDE
+.idea/
+.vscode/
+
+# Environment
+.env
+.venv
+env/
+
+# Uploads and temp files
+uploads/*
+!uploads/.gitkeep
+static/temp/*
+!static/temp/.gitkeep
+
+# Distribution / packaging
+build/
+dist/
+downloads/

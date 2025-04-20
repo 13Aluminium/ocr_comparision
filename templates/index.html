@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Upload Document for OCR</h4>
+            </div>
+            <div class="card-body">
+                <form id="ocrForm" enctype="multipart/form-data">
+                    <div class="file-drop-area" id="dropZone">
+                        <input type="file" id="file" name="file" accept=".png,.jpg,.jpeg,.pdf" class="file-input">
+                        <i class="mdi mdi-cloud-upload upload-icon"></i>
+                        <p class="upload-text">Drag and drop your file here</p>
+                        <p class="upload-hint">or click to browse</p>
+                        <p class="upload-hint">Supports JPG, PNG, and PDF files</p>
+                    </div>
+                    
+                    <div id="previewSection" class="preview-section mt-4" style="display: none;">
+                        <h5 class="mb-3">Document Preview</h5>
+                        <div id="imagePreview" class="text-center">
+                            <!-- Preview will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div class="document-type mb-4 mt-4">
+                        <label class="form-label">Document Type</label>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button type="button" class="btn btn-outline-primary active" data-type="image">
+                                <i class="mdi mdi-image-text"></i> Regular Text
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" data-type="handwriting">
+                                <i class="mdi mdi-hand-pointing-right"></i> Handwriting
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" data-type="invoice">
+                                <i class="mdi mdi-receipt"></i> Invoice
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" data-type="pdf">
+                                <i class="mdi mdi-file-pdf-box"></i> PDF
+                            </button>
+                        </div>
+                        <input type="hidden" name="file_type" id="fileType" value="image">
+                    </div>
+                    
+                    <input type="hidden" name="ocr_method" value="all">
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="mdi mdi-text-recognition"></i>
+                            Process with All OCR Libraries
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4" id="resultsSection" style="display: none;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">OCR Results</h4>
+            </div>
+            <div class="card-body">
+                <div class="libraries-grid">
+                    <!-- Results will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

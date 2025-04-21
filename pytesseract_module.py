@@ -21,7 +21,7 @@ def extract_text_from_image(image_path):
         _, binary = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
         
         # Use pytesseract to extract text
-        custom_config = r'--oem 3 --psm 6'
+        custom_config = r'--oem 3 --psm 3'
         text = pytesseract.image_to_string(binary, config=custom_config)
         
         return text.strip()
@@ -45,7 +45,7 @@ def extract_text_from_pdf(pdf_path):
             _, binary = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
             
             # Extract text
-            custom_config = r'--oem 3 --psm 6'
+            custom_config = r'--oem 3 --psm 3'
             text = pytesseract.image_to_string(binary, config=custom_config)
             all_text.append(f"--- Page {i+1} ---\n{text}")
         
@@ -71,7 +71,7 @@ def recognize_handwriting(image_path):
         binary = cv2.dilate(binary, kernel, iterations=1)
         
         # Recognize text with specific configuration for handwriting
-        custom_config = r'--oem 3 --psm 6 -l eng'
+        custom_config = r'--oem 3 --psm 3 -l eng'
         text = pytesseract.image_to_string(binary, config=custom_config)
         
         return text.strip()
